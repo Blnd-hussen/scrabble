@@ -6,7 +6,7 @@
 // Points assigned to each letter of the alphabet
 int POINTS[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
 
-int compute_score(char *word);
+const int compute_score(char *word);
 char *get_string(char *text);
 
 int main(void)
@@ -14,9 +14,13 @@ int main(void)
     // Get input words from both players
     char *word1 = get_string("Player 1: ");
     char *word2 = get_string("Player 2: ");
+    if (word1 == NULL || word2 == NULL)
+    {
+        printf("Null pointer exception\n");
+        return 1;
+    }
     
    
-
     // Score both words
     int score1 = compute_score(word1);
     int score2 = compute_score(word2);
@@ -50,7 +54,7 @@ char *get_string(char *text)
     return str;
 }
 
-int compute_score(char *word)
+const int compute_score(char *word)
 {
     int score = 0;
     int letter_value;
